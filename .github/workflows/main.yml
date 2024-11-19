@@ -31,3 +31,11 @@ jobs:
         run: |
           javac Fuzzer.java # Compile the fuzzer
           java Fuzzer ./html_parser_linux_x86_64
+
+          
+      - name: Upload Failure Inputs
+        if: ${{ failure() }} # Run only if the fuzzer exits with a non-zero status
+        uses: actions/upload-artifact@v3
+        with:
+          name: failure_inputs
+          path: failure_inputs.txt
