@@ -172,10 +172,10 @@ public class Fuzzer {
                 String errorOutput = readStreamIntoString(process.getErrorStream());
                 // Wait for the process to finish
                 int exitCode = process.waitFor();
-                if (!(exitCode == 0)){
-                    System.out.printf("Non-zero exit code: Exiting with exit Code 1\n");
-                    System.exit(1);
-                }
+                 if (!(exitCode == 0)){
+                     System.out.printf("Non-zero exit code: Exiting with exit Code %d\n", exitCode);
+                     System.exit(1);
+                 }
                 // Print results
                 System.out.printf("Input: %s\nExit Code: %d\nStdout:\n%s\nStderr:\n%s\n", input, exitCode, output, errorOutput);
                 
